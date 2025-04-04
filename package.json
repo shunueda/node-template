@@ -1,14 +1,13 @@
 {
   "name": "<NAME>",
   "version": "0.1.0",
-  "description": "",
+  "description": "description",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "check": "biome check --write && sort-package-json",
+    "check": "biome check --write && sort-package-json --quiet",
     "precommit": "pnpm check & pnpm type-check",
     "commit": "git add --all && cz",
-    "format": "biome format --write",
     "start": "tsx src",
     "test": "tsx --test",
     "type-check": "tsc"
@@ -28,11 +27,6 @@
     "typescript": "^5.8.2"
   },
   "packageManager": "pnpm@10.6.3",
-  "publishConfig": {
-    "access": "public",
-    "directory": "dist",
-    "provenance": true
-  },
   "pnpm": {
     "onlyBuiltDependencies": [
       "@biomejs/biome",

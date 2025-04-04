@@ -1,0 +1,45 @@
+{
+  "name": "<NAME>",
+  "version": "0.0.1",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shunueda/<NAME>.git"
+  },
+  "type": "module",
+  "scripts": {
+    "check": "biome check --write && sort-package-json",
+    "commit": "git add --all && cz",
+    "format": "biome format --write",
+    "start": "tsx src",
+    "test": "tsx --test",
+    "type-check": "tsc"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.14.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "lint-staged": "^15.5.0",
+    "sort-package-json": "^3.0.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist",
+    "provenance": true
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "esbuild"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*": "pnpm check & pnpm type-check"
+  }
+}
